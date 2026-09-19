@@ -17,6 +17,7 @@ app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 
 
-
+// to make database uri and password and port number hide
+// work with env files
 // install and add env
 //! install dotenv ==> npm i dotenv
