@@ -1,10 +1,10 @@
-import { MongoClient } from "mongodb";
+import { MongoClient } from "mongodb"
+import { env } from "../config/config.service.js";
 
-export const databaseConnect = async () => {
+export const dbConnection = async () => {
     try {
-        const uri = "mongodb://localhost:27017"
-        const client = new MongoClient(uri)
-        console.log("database connected successfully");
+        const client = new MongoClient(env.databaseUri)
+        console.log("db connected successfully...");
         return client
     } catch (error) {
         console.log(error);
