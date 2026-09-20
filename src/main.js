@@ -3,8 +3,8 @@ import { dbConnection } from './database/connection.js'
 import { env } from './config/config.service.js'
 
 const app = express()
-const port = 3000
-
+ console.log(env.databaseUri);
+ 
 
 const client = await dbConnection()
 const database = client.db("C48")
@@ -19,4 +19,3 @@ app.listen(env.port, () => console.log(`Example app listening on port ${env.port
 // work with env files
 // install and add env
 //! install dotenv ==> npm i dotenv
- 

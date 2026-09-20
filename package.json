@@ -4,8 +4,8 @@
   "description": "study mongoDb",
   "main": "index.js",
   "scripts": {
-    "running:dev": "cross-env NODE_ENV = dev node --watch ./src/main.js",
-    "running:prod": "node --watch ./src/main.js"
+    "run:dev": "cross-env NODE_ENV=dev node --watch src/main.js  --enable-turbo-mode",
+    "run:prod": "cross-env NODE_ENV=prod node --watch src/main.js  --enable-turbo-mode"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,7 @@
   "dependencies": {
     "cross-env": "^10.1.0",
     "dotenv": "^18.0.1",
+    "env": "^0.0.2",
     "express": "^5.2.1",
     "mongodb": "^7.6.0"
   }
