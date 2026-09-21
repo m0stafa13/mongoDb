@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addUser, getAllUsers, getUserById, updateUser } from "./user.service.js";
+import { addUser, deleteUser, getAllUsers, getUserById, updateUser } from "./user.service.js";
 
 const router = Router()
 // get all users 
@@ -22,6 +22,17 @@ router.put("/update-user/:id", async (req, res) => {
     let { code, data } = await updateUser(req.params, req.body)
     res.status(code).json(data)
 })
-
+// delete user 
+router.delete("/delete-user/:id", async (req, res) => {
+    let { code, data } = await deleteUser(req.params)
+    res.status(code).json(data)
+})
+//wrong path 
+router.all("/*path", (req, res) => {
+    res.status(404).json({
+        message: "server not found",
+        wrongPath: req.params.path
+    })
+})
 
 export default router

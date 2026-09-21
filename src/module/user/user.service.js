@@ -5,7 +5,7 @@ export const successRes = async (code, message, returnedData) => {
     return {
         code, data: {
             message,
-            returnedData
+            returnedData: returnedData ? returnedData : null
         }
     }
 }
@@ -26,7 +26,6 @@ export const catchError = async (code, error) => {
         }
     }
 }
-
 // CRUD 
 // get all users
 export const getAllUsers = async () => {
@@ -69,8 +68,6 @@ export const addUser = async (body) => {
 export const updateUser = async (id, body) => {
     const { name, email, password, phone } = body
     console.log(name, email, password, phone);
-
-
     let updatedData = {}
     name ? updatedData.name = name : null
     email ? updatedData.email = email : null
@@ -90,3 +87,13 @@ export const updateUser = async (id, body) => {
         return await catchError(404, "user not found")
     }
 }
+// delete user using id 
+export const deleteUser = async ({ id }) => {
+    let deletedUser = await userModel.deleteOne({ _id: new ObjectId(id) })
+    if (deletedUser.deletedCount > 0) {
+        return successRes(200, "user deleted successfully")
+    } else {
+        return wrongRes(404, "user not found")
+    }
+}
+
